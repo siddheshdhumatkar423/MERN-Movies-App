@@ -8,15 +8,15 @@
     "build": "react-scripts build",
     "test": "jest --passWithNoTests",
     "eject": "react-scripts eject",
-    "backend": "cd backend && npm start",  // Assuming your backend is in a "backend" folder
-    "frontend": "cd frontend && npm start" // Assuming your frontend is in a "frontend" folder
+    "backend": "cd backend && npm start",  
+    "frontend": "cd frontend && npm start" 
   },
   "dependencies": {
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-scripts": "^4.0.0",
-    "axios": "^0.21.1",  // If you're making HTTP requests
-    "express": "^4.17.1" // If you have an express server (or include backend dependencies)
+    "axios": "^0.21.1",  
+    "express": "^4.17.1" 
   },
   "devDependencies": {
     "jest": "^27.0.0",
