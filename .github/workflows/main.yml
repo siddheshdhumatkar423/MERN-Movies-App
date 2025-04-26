@@ -1,0 +1,76 @@
+name: CI/CD for MERN Stack
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js for the backend (Express)
+    - name: Set up Node.js for backend
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Change this to the version you use in your app
+
+    # Step 3: Install backend dependencies (Node.js + Express)
+    - name: Install backend dependencies
+      run: npm install
+      working-directory: ./backend # Adjust if your backend is in a different folder
+
+    # Step 4: Run backend tests
+    - name: Run backend tests
+      run: npm test
+      working-directory: ./backend
+
+    # Step 5: Set up Node.js for frontend (React)
+    - name: Set up Node.js for frontend
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Same version or adjust as needed
+
+    # Step 6: Install frontend dependencies (React)
+    - name: Install frontend dependencies
+      run: npm install
+      working-directory: ./client # Assuming your React app is in the "client" folder
+
+    # Step 7: Run frontend tests
+    - name: Run frontend tests
+      run: npm test -- --ci --silent --coverage
+      working-directory: ./client
+
+    # Step 8: Build the frontend (React app)
+    - name: Build React app
+      run: npm run build
+      working-directory: ./client
+
+    # Optional Step 9: Deploy backend and frontend (example for deploying to Heroku or other platforms)
+    # Example for Heroku deployment for both:
+    # Step 9a: Deploy backend (Node.js + Express) to Heroku
+    - name: Deploy backend to Heroku
+      run: |
+        git remote add heroku https://git.heroku.com/your-backend-app.git
+        git push heroku main
+      working-directory: ./backend
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+    # Step 9b: Deploy frontend (React) to Netlify (or another platform like Vercel, Azure, etc.)
+    - name: Deploy frontend to Netlify
+      run: |
+        npm install -g netlify-cli
+        netlify deploy --prod --dir=./client/build
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
