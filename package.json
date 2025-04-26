@@ -9,7 +9,8 @@
     "test": "jest --passWithNoTests",
     "eject": "react-scripts eject",
     "backend": "cd backend && npm start",  
-    "frontend": "cd frontend && npm start" 
+    "frontend": "cd frontend && npm start", 
+    "fullstack": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "dependencies": {
     "react": "^17.0.0",
@@ -21,17 +22,4 @@
   "devDependencies": {
     "jest": "^27.0.0",
     "babel-jest": "^27.0.0",
-    "jest-environment-jsdom": "^27.0.0",
-    "react-test-renderer": "^17.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/my-movies.git"
-  },
-  "author": "Your Name",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yourusername/my-movies/issues"
-  },
-  "homepage": "https://github.com/yourusername/my-movies"
-}
+    "jest-environment-jsdom": "^27.0.0
