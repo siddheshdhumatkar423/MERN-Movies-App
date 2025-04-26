@@ -7,7 +7,10 @@
   "scripts": {
     "fullstack": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "nodemon backend/index.js",
-    "frontend": "cd frontend && npm run dev"
+    "frontend": "cd frontend && npm run dev",
+    "test": "jest",  // <-- Add this line for testing with Jest
+    "test:frontend": "cd frontend && npm run test",  // <-- Optional: If you have separate frontend tests
+    "test:backend": "jest backend"  // <-- Optional: If you want to test the backend specifically
   },
   "keywords": [],
   "author": "",
@@ -23,5 +26,8 @@
     "mongoose": "^8.1.1",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"  // <-- Add Jest as a dev dependency for testing
   }
 }
