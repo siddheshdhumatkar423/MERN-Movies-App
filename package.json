@@ -1,4 +1,4 @@
-{
+ {
   "name": "my-movies",
   "version": "1.0.0",
   "description": "A MERN stack movie app",
@@ -9,7 +9,7 @@
     "test": "jest --passWithNoTests",
     "eject": "react-scripts eject",
     "backend": "cd backend && npm start",  
-    "frontend": "cd frontend && npm start", 
+    "frontend": "cd client && npm start", 
     "fullstack": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "dependencies": {
